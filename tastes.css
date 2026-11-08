@@ -1,0 +1,238 @@
+.section-tastes {
+  background: var(--surface);
+  border-block: 1px solid var(--line)
+}
+
+.taste-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px
+}
+
+.taste-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 258px;
+  padding: 22px 23px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--bg);
+  transition: transform .2s, border-color .2s
+}
+
+.taste-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line))
+}
+
+.taste-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  color: var(--faint);
+  font-size: 8px
+}
+
+.taste-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--accent-dark);
+  font-size: 17px
+}
+
+.taste-label {
+  margin: 21px 0 7px;
+  color: var(--accent-dark);
+  font: 8px "DM Mono", monospace;
+  letter-spacing: .09em;
+  position: relative;
+  z-index: 1
+}
+
+.taste-card h3 {
+  max-width: 340px;
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: -.045em;
+  position: relative;
+  z-index: 1
+}
+
+.taste-description {
+  max-width: 365px;
+  margin: 0 0 17px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1
+}
+
+.taste-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text);
+  font-size: 9px;
+  font-weight: 700
+}
+
+.taste-link span:last-child {
+  color: var(--accent)
+}
+
+.taste-link:hover {
+  color: var(--accent-dark)
+}
+
+.taste-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 17px;
+  position: relative;
+  z-index: 2
+}
+
+.taste-equalizer {
+  position: absolute;
+  right: 23px;
+  bottom: 0;
+  height: 90px;
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+  opacity: .14;
+  pointer-events: none
+}
+
+.taste-equalizer i {
+  width: 8px;
+  height: 45%;
+  border-radius: 5px 5px 0 0;
+  background: var(--accent)
+}
+
+.taste-equalizer i:nth-child(2n) {
+  height: 76%
+}
+
+.taste-equalizer i:nth-child(3n) {
+  height: 30%
+}
+
+.taste-equalizer i:nth-child(4n) {
+  height: 94%
+}
+
+.taste-sun {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  right: 36px;
+  bottom: -52px;
+  background: linear-gradient(180deg, #ffcf73, #ff9d76);
+  opacity: .22;
+  box-shadow: 0 0 0 18px #ffbf7033, 0 0 0 37px #ffbf701a;
+  pointer-events: none
+}
+
+.taste-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 74px;
+  background: linear-gradient(170deg, transparent 0 34%, color-mix(in srgb, var(--accent) 12%, var(--bg)) 35% 55%, transparent 56%), linear-gradient(10deg, transparent 0 43%, color-mix(in srgb, #efab70 20%, var(--bg)) 44% 62%, transparent 63%);
+  opacity: .75;
+  pointer-events: none
+}
+
+@media(max-width:700px) {
+  .taste-grid {
+    gap: 9px
+  }
+
+  .taste-card {
+    min-height: 248px;
+    padding: 17px 16px
+  }
+
+  .taste-card h3 {
+    font-size: 15px
+  }
+
+  .taste-description {
+    font-size: 9px
+  }
+
+  .taste-links {
+    gap: 7px 12px
+  }
+}
+
+@media(max-width:480px) {
+  .taste-grid {
+    grid-template-columns: 1fr
+  }
+
+  .taste-card {
+    min-height: 220px
+  }
+
+  .taste-card h3 {
+    font-size: 17px
+  }
+
+  .taste-description {
+    font-size: 10px
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease var(--reveal-delay, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay, 0ms)
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0)
+}
+
+.site-header {
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px)
+}
+
+.site-header .nav-links.open {
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px)
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease var(--reveal-delay, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay, 0ms) !important
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .7s ease var(--reveal-delay, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay, 0ms) !important
+  }
+}
