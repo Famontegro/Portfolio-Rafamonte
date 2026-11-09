@@ -28,7 +28,17 @@
       'stats.projects': 'PROJETOS ACADÊMICOS',
       'terminal.kicker': 'PARA QUEM GOSTA DE LINHA DE COMANDO',
       'terminal.heading': 'Prefere o terminal<span class="accent-dot">?</span>',
-      'terminal.note': 'Um terminal de mentira com respostas de verdade. Digite help para começar ou toque em um comando.'
+      'terminal.note': 'Um terminal de mentira com respostas de verdade. Digite help para começar ou toque em um comando.',
+      'hero.ctaCv': 'Currículo',
+      'contact.cv': 'Currículo (PDF) <span>↗</span>',
+      'cv.title': 'Currículo',
+      'cv.desc': 'Tudo isso em uma página só, sempre na versão mais recente.',
+      'cv.download': 'Baixar PDF',
+      'cv.view': 'Abrir',
+      'skills.allUsf': 'Tudo na USF',
+      'skills.learnedKicker': 'ONDE APRENDI',
+      'skills.fromUsf': 'C e toda a parte de eletrônica',
+      'skills.fromCev': 'Python, HTML, CSS, Git e GitHub'
     },
     en: {
       'projects.academicFair': 'ACADEMIC PROJECT · USF PROJECT FAIR',
@@ -38,7 +48,17 @@
       'stats.projects': 'ACADEMIC PROJECTS',
       'terminal.kicker': 'FOR COMMAND-LINE PEOPLE',
       'terminal.heading': 'Prefer the terminal<span class="accent-dot">?</span>',
-      'terminal.note': 'A fake terminal with real answers. Type help to start, or tap a command.'
+      'terminal.note': 'A fake terminal with real answers. Type help to start, or tap a command.',
+      'hero.ctaCv': 'Résumé',
+      'contact.cv': 'Résumé (PDF) <span>↗</span>',
+      'cv.title': 'Résumé',
+      'cv.desc': 'All of this on a single page, always the latest version.',
+      'cv.download': 'Download PDF',
+      'cv.view': 'Open',
+      'skills.allUsf': 'All at USF',
+      'skills.learnedKicker': 'WHERE I LEARNED IT',
+      'skills.fromUsf': 'C and all of the electronics',
+      'skills.fromCev': 'Python, HTML, CSS, Git and GitHub'
     }
   };
   try {

@@ -83,8 +83,9 @@
           <div class="hero-actions"><a class="button button-primary" href="#projetos"><span
                 data-i18n="hero.ctaProjects">Conheça meus projetos</span><span aria-hidden="true">↗</span></a><a
               class="button button-quiet" href="#sobre"><span data-i18n="hero.ctaAbout">Sobre mim</span><span
-                aria-hidden="true">↓</span></a></div>
-          <div class="hero-foot"><span class="mono">20°26' S&nbsp; 46°32' W</span><span
+                aria-hidden="true">↓</span></a><a class="button button-quiet" href="curriculo.pdf" target="_blank" rel="noopener"><span
+                data-i18n="hero.ctaCv">Currículo</span><span aria-hidden="true">↗</span></a></div>
+          <div class="hero-foot"><span class="mono">22°955' S&nbsp; 46°542' W</span><span
               data-i18n="hero.location">BRAGANÇA PAULISTA, SP · BRASIL</span></div>
         </div>
         <div class="hero-art" aria-label="Ilustração de uma bancada de engenharia com circuito, código e componentes"
@@ -214,12 +215,10 @@
               software e inteligência artificial. Por enquanto, sigo aprendendo e construindo um projeto de cada vez.
             </p>
             <div class="about-facts">
-              <div><span class="fact-value">02<span>º</span></span><span class="fact-label"
+              <div><span class="fact-value">02 º</span><span class="fact-label"
                   data-i18n="about.fact1">SEMESTRE</span></div>
               <div><span class="fact-value">USF</span><span class="fact-label" data-i18n="about.fact2">ENG. DA
                   COMPUTAÇÃO</span></div>
-              <div><span class="fact-value">∞</span><span class="fact-label" data-i18n="about.fact3">CURIOSIDADE</span>
-              </div>
             </div>
           </div>
         </div>
@@ -377,10 +376,10 @@
               <h3 data-i18n="skills.programming">Programação</h3><span class="skill-count mono">01 — 04</span>
             </div>
             <ul class="skill-list">
-              <li><span>C</span><span class="level" data-i18n="skills.basicInter">Intermediário-avançado</span></li>
-              <li><span>Python</span><span class="level" data-i18n="skills.basic">Básico</span></li>
-              <li><span>HTML</span><span class="level" data-i18n="skills.advanced">Avançado</span></li>
-              <li><span>CSS</span><span class="level" data-i18n="skills.intermediate">Intermediário</span></li>
+              <li><span>C<em class="origin">USF</em></span><span class="level" data-i18n="skills.basicInter">Intermediário-avançado</span></li>
+              <li><span>Python<em class="origin">Curso em Vídeo</em></span><span class="level" data-i18n="skills.basic">Básico</span></li>
+              <li><span>HTML<em class="origin">Curso em Vídeo</em></span><span class="level" data-i18n="skills.advanced">Avançado</span></li>
+              <li><span>CSS<em class="origin">Curso em Vídeo</em></span><span class="level" data-i18n="skills.intermediate">Intermediário</span></li>
             </ul>
           </article>
           <article class="skill-card">
@@ -388,7 +387,7 @@
               <h3 data-i18n="skills.tools">Ferramentas</h3><span class="skill-count mono">02 — 04</span>
             </div>
             <ul class="skill-list">
-              <li><span>Git &amp; GitHub</span><span class="level" data-i18n="skills.gitLevel">Avançado</span></li>
+              <li><span>Git &amp; GitHub<em class="origin">Curso em Vídeo</em></span><span class="level" data-i18n="skills.gitLevel">Avançado</span></li>
               <li><span>Visual Studio Code</span><span class="level" data-i18n="skills.daily">Uso acadêmico</span></li>
               <li><span>Arduino IDE</span><span class="level" data-i18n="skills.daily">Uso acadêmico</span></li>
               <li><span>Linux</span><span class="level" data-i18n="skills.basic">Básico</span></li>
@@ -396,7 +395,8 @@
           </article>
           <article class="skill-card">
             <div class="skill-head"><span class="skill-icon">⌁</span>
-              <h3 data-i18n="skills.electronics">Eletrônica</h3><span class="skill-count mono">03 — 06</span>
+              <h3 data-i18n="skills.electronics">Eletrônica</h3><em class="origin origin-card"
+                data-i18n="skills.allUsf">Tudo na USF</em><span class="skill-count mono">03 — 06</span>
             </div>
             <ul class="skill-list">
               <li><span>Arduino</span><span class="level" data-i18n="skills.projects">Projetos acadêmicos</span></li>
@@ -412,6 +412,14 @@
                   desenvolvimento</span></li>
             </ul>
           </article>
+        </div>
+        <div class="learned-from">
+          <span class="mono" data-i18n="skills.learnedKicker">ONDE APRENDI</span>
+          <span class="learned-item"><a class="origin" href="https://www.usf.edu.br" target="_blank"
+              rel="noreferrer">USF ↗</a><span data-i18n="skills.fromUsf">C e toda a parte de eletrônica</span></span>
+          <span class="learned-item"><a class="origin" href="https://www.cursoemvideo.com" target="_blank"
+              rel="noreferrer">Curso em Vídeo ↗</a><span data-i18n="skills.fromCev">Python, HTML, CSS, Git e
+              GitHub</span></span>
         </div>
       </div>
     </section>
@@ -511,6 +519,19 @@
           <h2 data-i18n="journey.heading">Minha trajetória<span class="accent-dot">.</span></h2>
           <p class="journey-note" data-i18n="journey.note">Ainda no começo, com bastante espaço pela frente para
             aprender, experimentar e contribuir.</p>
+          <div class="cv-card">
+            <span class="cv-icon mono" aria-hidden="true">PDF</span>
+            <div class="cv-body">
+              <h3 data-i18n="cv.title">Currículo</h3>
+              <p data-i18n="cv.desc">Tudo isso em uma página só, sempre na versão mais recente.</p>
+              <div class="cv-actions">
+                <a class="button button-primary" href="curriculo.pdf" download="Curriculo-Rafael-Montenegro-Ribeiro.pdf"><span
+                    data-i18n="cv.download">Baixar PDF</span><span aria-hidden="true">↓</span></a>
+                <a class="button button-quiet" href="curriculo.pdf" target="_blank" rel="noopener"><span
+                    data-i18n="cv.view">Abrir</span><span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="timeline">
           <article class="timeline-item"><span class="timeline-year mono">2025</span><span
@@ -591,7 +612,8 @@
               <span>↗</span></a><a href="https://www.linkedin.com/in/rafael-montenegro-ribeiro/" target="_blank"
               rel="noreferrer">LinkedIn <span>↗</span></a><a href="https://www.instagram.com/famontegro/"
               target="_blank" rel="noreferrer">Instagram <span>↗</span></a><a
-              href="mailto:rafamonte98@gmail.com">rafamonte98@gmail.com <span>↗</span></a></div>
+              href="mailto:rafamonte98@gmail.com">rafamonte98@gmail.com <span>↗</span></a><a href="curriculo.pdf" target="_blank" rel="noopener"
+              data-i18n="contact.cv">Currículo (PDF) <span>↗</span></a></div>
         </div>
         <div class="contact-form-wrap">
           <div class="form-heading">
@@ -624,7 +646,7 @@
   <footer class="site-footer">
     <div class="shell footer-inner"><a class="brand footer-brand" href="#inicio"><span
           class="brand-mark">R:</span><span>Rafamonte<span class="brand-dot">.</span></span></a><span
-        class="footer-copy" data-i18n="footer.copy">Feito com curiosidade, café e alguns fios jumper.</span><span
+        class="footer-copy" data-i18n="footer.copy">Site feito com VibeCoding</span><span
         class="mono footer-year">© 2026 · RAFAEL MONTENEGRO RIBEIRO</span><a class="back-top mono" href="#top"
         data-i18n="footer.top">VOLTAR AO TOPO ↑</a></div>
   </footer>
