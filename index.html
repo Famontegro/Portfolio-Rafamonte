@@ -20,15 +20,26 @@
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="tastes.css">
+  <link rel="stylesheet" href="fx.css">
+  <script>try { if (sessionStorage.getItem('rafamonte-booted')) document.documentElement.classList.add('no-boot'); } catch (e) { }</script>
   <script src="script.js" defer></script>
+  <script src="fx.js" defer></script>
 </head>
 
 <body>
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot-inner">
+      <div class="boot-log" id="boot-log"></div>
+      <div class="boot-bar"><i></i></div>
+      <p class="boot-skip mono"></p>
+    </div>
+  </div>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
   <a class="skip-link" href="#main" data-i18n="skip">Pular para o conteúdo</a>
   <header class="site-header" id="top">
     <nav class="nav shell" aria-label="Navegação principal">
       <a class="brand" href="#inicio" aria-label="Rafamonte — início"><span
-          class="brand-mark">R:<span></span></span><span>Rafamonte<span class="brand-dot">.</span></span></a>
+          class="brand-mark">R:</span><span>Rafamonte<span class="brand-dot">.</span></span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links"
         aria-label="Abrir menu"><span></span><span></span></button>
       <div class="nav-links" id="nav-links">
@@ -63,6 +74,8 @@
           <p class="eyebrow"><span class="status-dot"></span><span data-i18n="hero.eyebrow">ENGENHARIA DA COMPUTAÇÃO ·
               USF</span></p>
           <h1 data-i18n="hero.title">Olá, eu sou<br><span>Rafael Montenegro.</span></h1>
+          <p class="hero-roles mono" aria-hidden="true"><span class="prompt">&gt;</span><span id="role-text"></span><span
+              class="caret"></span></p>
           <p class="hero-lead" data-i18n="hero.lead">Estudante de Engenharia da Computação, apaixonado por tecnologia,
             eletrônica e desenvolvimento de soluções.</p>
           <p class="hero-manifesto" data-i18n="hero.manifesto">Transformando curiosidade em projetos, ideias em
@@ -71,7 +84,7 @@
                 data-i18n="hero.ctaProjects">Conheça meus projetos</span><span aria-hidden="true">↗</span></a><a
               class="button button-quiet" href="#sobre"><span data-i18n="hero.ctaAbout">Sobre mim</span><span
                 aria-hidden="true">↓</span></a></div>
-          <div class="hero-foot"><span class="mono">22°955' S&nbsp; 46°542' W</span><span
+          <div class="hero-foot"><span class="mono">20°26' S&nbsp; 46°32' W</span><span
               data-i18n="hero.location">BRAGANÇA PAULISTA, SP · BRASIL</span></div>
         </div>
         <div class="hero-art" aria-label="Ilustração de uma bancada de engenharia com circuito, código e componentes"
@@ -143,7 +156,10 @@
             <g transform="translate(75 340)">
               <circle cx="45" cy="45" r="40" class="dial" />
               <circle cx="45" cy="45" r="26" fill="none" stroke="var(--accent)" stroke-width="2" />
-              <path d="M45 19v26l17 9" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" />
+              <path d="M45 19v26l17 9" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="0 45 45" to="360 45 45" dur="12s"
+                  repeatCount="indefinite" />
+              </path>
               <text x="45" y="100" text-anchor="middle" class="dial-label mono">SIGNAL / 01</text>
             </g>
             <g transform="translate(477 93)">
@@ -158,6 +174,14 @@
       <div class="hero-scroll shell"><span class="scroll-line"></span><span class="mono" data-i18n="hero.scroll">ROLE
           PARA EXPLORAR</span><span class="mono">01 — 08</span></div>
     </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span>C</span><span>C++</span><span>RASPBERRY-PI</span><span>ARDUINO</span><span>NFC / RFID</span><span>HTML</span><span>CSS</span><span>PYTHON</span><span>GIT</span><span>LINUX</span><span>ESP32</span><span>SERVO</span><span>I/O</span>
+        </div>
+      </div>
+    </div>
 
     <section class="section section-about section-pad" id="sobre">
       <div class="shell">
@@ -190,7 +214,7 @@
               software e inteligência artificial. Por enquanto, sigo aprendendo e construindo um projeto de cada vez.
             </p>
             <div class="about-facts">
-              <div><span class="fact-value">02 º<span></span></span><span class="fact-label"
+              <div><span class="fact-value">02<span>º</span></span><span class="fact-label"
                   data-i18n="about.fact1">SEMESTRE</span></div>
               <div><span class="fact-value">USF</span><span class="fact-label" data-i18n="about.fact2">ENG. DA
                   COMPUTAÇÃO</span></div>
@@ -248,7 +272,7 @@
             <div class="project-content">
               <div class="project-title-row">
                 <div>
-                  <p class="project-type" data-i18n="projects.academic">PROJETO ACADÊMICO · FEIRA DE PROJETOS USF</p>
+                  <p class="project-type" data-i18n="projects.academicFair">PROJETO ACADÊMICO · FEIRA DE PROJETOS USF</p>
                   <h3 data-i18n="projects.nfcTitle">Sistema de Controle de Acesso</h3>
                 </div><span class="project-number mono">01</span>
               </div>
@@ -268,18 +292,16 @@
               <div class="visual-top mono"><span>PROJETO 002</span><span>C / CLI</span></div>
               <div class="terminal">
                 <div class="terminal-bar"><i></i><i></i><i></i><span class="mono">scientific_calc.c</span></div>
-                <pre class="mono"><span class="code-muted">01</span> <span class="code-purple">#include</span> <span class="code-green">&lt;math.h&gt;</span>
+                <pre class="mono"><span class="code-muted">01</span> <span class="code-purple">#include</span> <span class="code-green">&lt;stdio.h&gt;</span>
 <span class="code-muted">02</span>
-<span class="code-muted">03</span> <span class="code-purple">double</span> <span class="code-yellow">calculate</span>(<span class="code-purple">int</span> op, <span class="code-purple">double</span> x) {
-<span class="code-muted">04</span>   <span class="code-purple">switch</span> (op) {
-<span class="code-muted">05</span>     <span class="code-purple">case</span> <span class="code-orange">1</span>: <span class="code-purple">return</span> <span class="code-yellow">sqrt</span>(x);
-<span class="code-muted">06</span>     <span class="code-purple">case</span> <span class="code-orange">2</span>: <span class="code-purple">return</span> <span class="code-yellow">pow</span>(x, <span class="code-orange">2</span>);
-<span class="code-muted">07</span>     <span class="code-purple">default</span>: <span class="code-purple">return</span> x;
-<span class="code-muted">08</span>   }
-<span class="code-muted">09</span> }</pre>
+<span class="code-muted">03</span> <span class="code-purple">int</span> <span class="code-yellow">main</span>(<span class="code-purple">void</span>) {
+<span class="code-muted">04</span>   <span class="code-yellow">printf</span>(<span class="code-green">&quot;Calculadora científica\n&quot;</span>);
+<span class="code-muted">05</span>   <span class="code-yellow">printf</span>(<span class="code-green">&quot;44 menus · 107 operações\n&quot;</span>);
+<span class="code-muted">06</span>   <span class="code-purple">return</span> <span class="code-orange">0</span>;
+<span class="code-muted">07</span> }</pre>
               </div>
               <div class="code-spark">⌘</div>
-              <div class="visual-label mono">LOGIC / FUNCTIONS / MATH</div>
+              <div class="visual-label mono">C / STDIO / 44 MENUS</div>
             </div>
             <div class="project-content">
               <div class="project-title-row">
@@ -288,9 +310,8 @@
                   <h3 data-i18n="projects.calcTitle">Calculadora Científica em C</h3>
                 </div><span class="project-number mono">02</span>
               </div>
-              <p data-i18n="projects.calcDesc">Calculadora de linha de comando feita para praticar lógica, funções,
-                estruturas condicionais e operações matemáticas. Um exercício de organização do código e fundamentos de
-                programação.</p>
+              <p data-i18n="projects.calcDesc">Uma calculadora científica com fórmulas em C, utilizando apenas uma
+                biblioteca: stdio.h. O código possui 44 menus, 107 operações diferentes e 3.069 linhas de código.</p>
               <div class="tag-list"><span>C</span><span data-i18n="projects.logic">Lógica de programação</span><span
                   data-i18n="projects.math">Operações matemáticas</span></div>
               <div class="project-links"><a
@@ -356,10 +377,10 @@
               <h3 data-i18n="skills.programming">Programação</h3><span class="skill-count mono">01 — 04</span>
             </div>
             <ul class="skill-list">
-              <li><span>C</span><span class="level" data-i18n="skills.basicInter">Básico / intermediário</span></li>
+              <li><span>C</span><span class="level" data-i18n="skills.basicInter">Intermediário-avançado</span></li>
               <li><span>Python</span><span class="level" data-i18n="skills.basic">Básico</span></li>
               <li><span>HTML</span><span class="level" data-i18n="skills.advanced">Avançado</span></li>
-              <li><span>CSS</span><span class="level" data-i18n="skills.learning">Em desenvolvimento</span></li>
+              <li><span>CSS</span><span class="level" data-i18n="skills.intermediate">Intermediário</span></li>
             </ul>
           </article>
           <article class="skill-card">
@@ -367,7 +388,7 @@
               <h3 data-i18n="skills.tools">Ferramentas</h3><span class="skill-count mono">02 — 04</span>
             </div>
             <ul class="skill-list">
-              <li><span>Git &amp; GitHub</span><span class="level" data-i18n="skills.daily">Uso acadêmico</span></li>
+              <li><span>Git &amp; GitHub</span><span class="level" data-i18n="skills.gitLevel">Avançado</span></li>
               <li><span>Visual Studio Code</span><span class="level" data-i18n="skills.daily">Uso acadêmico</span></li>
               <li><span>Arduino IDE</span><span class="level" data-i18n="skills.daily">Uso acadêmico</span></li>
               <li><span>Linux</span><span class="level" data-i18n="skills.basic">Básico</span></li>
@@ -443,7 +464,8 @@
               rel="noreferrer" class="taste-link"><span data-i18n="tastes.spotify">Spotify ·
                 Rafamonte</span><span>↗</span></a>
             <div class="taste-equalizer" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
           </article>
           <article class="taste-card taste-outdoors">
             <div class="taste-card-top"><span class="taste-icon">↗</span><span class="mono">02 / OUTDOORS</span></div>
@@ -526,10 +548,42 @@
       </div>
     </section>
 
+    <section class="section section-terminal section-pad" id="terminal">
+      <div class="shell">
+        <div class="section-heading heading-row">
+          <div>
+            <p class="eyebrow"><span class="section-index">07</span><span data-i18n="terminal.kicker">PARA QUEM GOSTA DE
+                LINHA DE COMANDO</span></p>
+            <h2 data-i18n="terminal.heading">Prefere o terminal<span class="accent-dot">?</span></h2>
+          </div>
+          <p class="heading-note" data-i18n="terminal.note">Um terminal de mentira com respostas de verdade. Digite help
+            para começar ou toque em um comando.</p>
+        </div>
+        <div class="term" id="term">
+          <div class="term-bar"><i></i><i></i><i></i><span class="mono">rafael@rafamonte: ~</span></div>
+          <div class="term-body" id="term-body" role="log" aria-live="polite"></div>
+          <form class="term-form" id="term-form" autocomplete="off">
+            <label class="term-prompt" for="term-input">$</label>
+            <input id="term-input" type="text" spellcheck="false" autocapitalize="off" autocorrect="off"
+              autocomplete="off" placeholder="digite um comando" aria-label="Terminal">
+          </form>
+          <div class="term-chips">
+            <button type="button" data-cmd="help">help</button>
+            <button type="button" data-cmd="whoami">whoami</button>
+            <button type="button" data-cmd="projects">projects</button>
+            <button type="button" data-cmd="skills">skills</button>
+            <button type="button" data-cmd="contact">contact</button>
+            <button type="button" data-cmd="theme">theme</button>
+            <button type="button" data-cmd="matrix">matrix</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="contact section-pad" id="contato">
       <div class="shell">
         <div class="contact-top">
-          <p class="eyebrow"><span class="section-index">07</span><span data-i18n="contact.kicker">CONTATO</span></p>
+          <p class="eyebrow"><span class="section-index">08</span><span data-i18n="contact.kicker">CONTATO</span></p>
           <h2 data-i18n="contact.heading">Vamos construir<br>algo interessante<span class="accent-dot">?</span></h2>
           <p class="contact-lead" data-i18n="contact.lead">Estou aberto a oportunidades, projetos, conexões e
             experiências que contribuam para minha evolução na tecnologia.</p>
@@ -569,7 +623,7 @@
   </main>
   <footer class="site-footer">
     <div class="shell footer-inner"><a class="brand footer-brand" href="#inicio"><span
-          class="brand-mark">R:<span></span></span><span>Rafamonte<span class="brand-dot">.</span></span></a><span
+          class="brand-mark">R:</span><span>Rafamonte<span class="brand-dot">.</span></span></a><span
         class="footer-copy" data-i18n="footer.copy">Feito com curiosidade, café e alguns fios jumper.</span><span
         class="mono footer-year">© 2026 · RAFAEL MONTENEGRO RIBEIRO</span><a class="back-top mono" href="#top"
         data-i18n="footer.top">VOLTAR AO TOPO ↑</a></div>
