@@ -676,6 +676,127 @@ body.is-booting {
   outline-offset: 2px;
 }
 
+/* ---------- Origem das habilidades ---------- */
+.skill-list li>span:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.origin {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  border-radius: 4px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font: 500 7.5px/1.5 "DM Mono", monospace;
+  font-style: normal;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+a.origin {
+  transition: border-color .2s, background .2s;
+}
+
+a.origin:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.skill-head .origin-card {
+  margin-left: 2px;
+}
+
+.learned-from {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 26px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.learned-from>.mono {
+  color: var(--faint);
+  font-size: 8px;
+}
+
+.learned-item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+
+/* ---------- Cartão do currículo ---------- */
+.cv-card {
+  display: flex;
+  gap: 16px;
+  max-width: 400px;
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--bg);
+  transition: border-color .25s, transform .25s;
+}
+
+.cv-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  transform: translateY(-2px);
+}
+
+.cv-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px 12px 6px 6px;
+  background: var(--surface);
+  color: var(--accent-dark);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.cv-body h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  letter-spacing: -.03em;
+}
+
+.cv-body p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cv-actions .button {
+  min-height: 38px;
+  padding: 0 14px;
+  gap: 10px;
+  font-size: 10px;
+}
+
+.hero-actions {
+  flex-wrap: wrap;
+}
+
 /* ---------- Responsivo ---------- */
 @media (max-width: 900px) {
   .stats-strip {
